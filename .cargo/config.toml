@@ -1,7 +1,7 @@
 # see README.md for an explanation of these settings
+
 [build]
 target = "thumbv7m-none-eabi"
-runner = ["probe-rs", "run", "--chip", "STM32F103C8Tx", "--log-format=oneline"]
 
 # this forces the use of `flip-link` linker script
 # see https://github.com/knurling-rs/flip-link for an explanation of this
@@ -10,6 +10,7 @@ build-std = ["core", "compiler_builtins"]
 linker-flavor = "ld.lld"
 
 [target.thumbv7m-none-eabi]
+runner = ["probe-rs", "run", "--chip", "STM32F103C8Tx", "--log-format=oneline"]
 rustflags = [
   "-C", "link-arg=-Tlink.x",
   "-C", "link-arg=-Tdefmt.x",
