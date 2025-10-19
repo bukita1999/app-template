@@ -1,0 +1,29 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "Debug STM32F103C8T6 (main)",
+            "chip": "STM32F103C8Tx",
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Build main (debug)",
+            "speed": 4000,
+            "connectUnderReset": false,
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "resetAfterFlashing": true,
+                "haltAfterReset": true
+            },
+            "coreConfigs": [
+                {
+                    "programBinary": "${workspaceFolder}/target/thumbv7m-none-eabi/debug/main",
+                    "chip": "STM32F103C8Tx",
+                    "runtimeEncoding": "DefmtRtt"
+                }
+            ],
+            "consoleLogLevel": "Info"
+        }
+    ]
+}

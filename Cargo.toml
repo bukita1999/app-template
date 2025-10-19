@@ -1,46 +1,48 @@
 [package]
 # TODO(1) fix `authors` and `name` if you didn't use `cargo-generate`
-authors = ["{{authors}}"]
-name = "{{project-name}}"
-edition = "2024"
+authors = ["Your Name <your.email@example.com>"]
+name = "chuang-test"
+edition = "2021"
 version = "0.1.0"
-
 
 # To run all the tests via `cargo test` the tests need to be explicitly disabled for the binary targets
 # If you use a standard main.rs file the following is sufficient:
+[[bin]]
+name = "main"
+path = "src/main.rs"
+test = false
+
+# Example binaries - uncomment if you want to build them, but for default focus on main:
+# 
 # [[bin]]
-# name = "{{project-name}}"
+# name = "bitfield"
+# path = "src/bin/bitfield.rs"
 # test = false
-
-[[bin]]
-name = "bitfield"
-path = "src/bin/bitfield.rs"
-test = false
-
-[[bin]]
-name = "format"
-path = "src/bin/format.rs"
-test = false
-
-[[bin]]
-name = "hello"
-path = "src/bin/hello.rs"
-test = false
-
-[[bin]]
-name = "levels"
-path = "src/bin/levels.rs"
-test = false
-
-[[bin]]
-name = "overflow"
-path = "src/bin/overflow.rs"
-test = false
-
-[[bin]]
-name = "panic"
-path = "src/bin/panic.rs"
-test = false
+# 
+# [[bin]]
+# name = "format"
+# path = "src/bin/format.rs"
+# test = false
+# 
+# [[bin]]
+# name = "hello"
+# path = "src/bin/hello.rs"
+# test = false
+# 
+# [[bin]]
+# name = "levels"
+# path = "src/bin/levels.rs"
+# test = false
+# 
+# [[bin]]
+# name = "overflow"
+# path = "src/bin/overflow.rs"
+# test = false
+# 
+# [[bin]]
+# name = "panic"
+# path = "src/bin/panic.rs"
+# test = false
 
 [lib]
 harness = false
@@ -55,9 +57,11 @@ cortex-m = { version = "0.7", features = ["critical-section-single-core"] }
 cortex-m-rt = "0.7"
 defmt = "1.0"
 defmt-rtt = "1.0"
-panic-probe = { version = "1.0", features = ["print-defmt"] }
+panic-probe = { version = "0.3", features = ["print-defmt"] }
 semihosting = "0.1.20"
-# TODO(4) enter your HAL here
+# For STM32F103C8T6 (Blue Pill) - adjust features for your MCU
+stm32f1xx-hal = { version = "0.10", features = ["stm32f103"] }
+# TODO(4) enter your HAL here if changing MCU
 # some-hal = "1.2.3"
 
 [dev-dependencies]

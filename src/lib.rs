@@ -3,7 +3,9 @@
 
 use defmt_rtt as _; // global logger
 
-// TODO(5) adjust HAL import
+// TODO(5) adjust HAL import for your MCU (example for STM32F103):
+use stm32f1xx_hal as _; // memory layout
+// For other MCUs, replace with appropriate HAL, e.g.:
 // use some_hal as _; // memory layout
 
 use panic_probe as _;

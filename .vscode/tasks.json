@@ -1,0 +1,99 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build main (debug)",
+            "type": "shell",
+            "command": "cargo",
+            "args": ["build", "--bin", "main"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": "$rustc"
+        },
+        {
+            "label": "Build (debug)",
+            "type": "shell",
+            "command": "cargo",
+            "args": ["build", "--bin", "${input:binaryName}"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": "$rustc"
+        },
+        {
+            "label": "Build (release)",
+            "type": "shell",
+            "command": "cargo",
+            "args": ["build", "--release", "--bin", "${input:binaryName}"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": "$rustc"
+        },
+        {
+            "label": "Clean",
+            "type": "shell",
+            "command": "cargo",
+            "args": ["clean"],
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
+            "label": "Check",
+            "type": "shell",
+            "command": "cargo",
+            "args": ["check", "--bin", "${input:binaryName}"],
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": "$rustc"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "binaryName",
+            "description": "Select the binary to build",
+            "default": "main",
+            "type": "pickString",
+            "options": [
+                "main"
+            ]
+        }
+    ]
+}
